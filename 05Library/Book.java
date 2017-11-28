@@ -38,4 +38,11 @@ public class Book{
 	return toReturn;
     }
 
+    //public static void main(String[] args){
+    //	Book yeet  = new Book("Yeetmaster", "The Art of the Yeet", "3785678165786578346");
+    //	System.out.println(yeet.toString());
+    //	yeet.setISBN("not a number");
+    //	System.out.println(yeet.toString());
+    //}
+
 }
