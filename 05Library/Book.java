@@ -12,24 +12,30 @@ public class Book{
 	ISBN = ISBNIn;
     }
 
-    public getAuthor(){
+    public String getAuthor(){
 	return author;
     }
-    public getTitle(){
+    public String getTitle(){
 	return title;
     }
-    public getISBN(){
+    public String getISBN(){
 	return ISBN;
     }
 
-    public setAuthor(String authorIn){
+    public void setAuthor(String authorIn){
 	author = authorIn;
     }
-    public setTitle(String titleIn){
+    public void setTitle(String titleIn){
 	title = titleIn;
     }
-    public setISBN(String ISBNIn){
+    public void setISBN(String ISBNIn){
 	ISBN = ISBNIn;
+    }
+
+    public String toString(){
+	String toReturn = "";
+	toReturn += author + ", " + title + ", " + ISBN;
+	return toReturn;
     }
 
 }
