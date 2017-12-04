@@ -9,7 +9,7 @@ public class Barcode{
 	public Barcode( String zip){
 		this.zip = zip;
 		checkDig = sumDigs(zip) % 10;
-		bar += "|";
+		bar = "|";
 		for( int stepper = 0; stepper < zip.length(); stepper++){
 			bar += reps[Integer.parseInt(zip.substring(stepper, stepper + 1))];
 		}
@@ -28,7 +28,7 @@ public class Barcode{
 	}
 	
 	public String toString(){
-		return "a";
+		return bar;
 	}
 	
 	public int sumDigs(String num){
@@ -39,6 +39,14 @@ public class Barcode{
 		return sum;
 	}
 
+	/*public static void main(String[] args){
+		Barcode b = new Barcode("11111");
+		System.out.println(b.getZip());
+		System.out.println(b.getBar());
+		System.out.println(b.getCheckDig());
+		System.out.println(b.toString());
+		
+	}*/
 
 
 }
