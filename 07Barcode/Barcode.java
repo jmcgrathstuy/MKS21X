@@ -28,7 +28,7 @@ public class Barcode{
 	}
 	
 	public String toString(){
-		return bar;
+		return bar + " (" + zip + ")";
 	}
 	
 	public int sumDigs(String num){
@@ -39,14 +39,14 @@ public class Barcode{
 		return sum;
 	}
 
-	/*public static void main(String[] args){
+	public static void main(String[] args){
 		Barcode b = new Barcode("11111");
 		System.out.println(b.getZip());
 		System.out.println(b.getBar());
 		System.out.println(b.getCheckDig());
 		System.out.println(b.toString());
 		
-	}*/
+	}
 
 
 }
