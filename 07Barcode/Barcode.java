@@ -1,4 +1,4 @@
-public class Barcode{
+public class Barcode implements Comparable<Barcode>{
 	
 	private String bar;
 	private String zip;
@@ -37,6 +37,11 @@ public class Barcode{
 			sum += Integer.parseInt(zip.substring(stepper, stepper + 1));
 		}
 		return sum;
+	}
+	
+	public int compareTo( Barcode other){
+		//return String.parseInt( this.getZip()).compareTo( String.parseInt( other.getZip()));
+		return this.getZip().compareTo( other.getZip());
 	}
 	
 	public static String toCode( String zipCode){
@@ -95,14 +100,15 @@ public class Barcode{
 
 	/*public static void main(String[] args){
 		Barcode b = new Barcode("11111");
+		Barcode a = new Barcode("22222");
 		System.out.println(b.getZip());
 		System.out.println(b.getBar());
 		System.out.println(b.getCheckDig());
 		System.out.println(b.toString());
 		System.out.println(toCode( "11953"));
 		System.out.println(toZip( "|:::||:::|||:|:::|:|:::||::|:|:|"));
-		System.out.println(toZip( "|:::||:::|||:|:::|:|:::||::::::|"));*/
-	}
+		System.out.println(b.compareTo( a));
+	}*/
 
 
 }
