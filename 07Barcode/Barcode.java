@@ -1,10 +1,10 @@
 public class Barcode{
 	
-	String bar;
-	String zip;
-	int checkDig;
+	private String bar;
+	private String zip;
+	private int checkDig;
 	
-	String[] reps = {"||:::", ":::||", "::|:|", "::||:", ":|::|", ":|:|:", ":||::", "|:::|", "|::|:", "|:|::"};
+	private String[] reps = {"||:::", ":::||", "::|:|", "::||:", ":|::|", ":|:|:", ":||::", "|:::|", "|::|:", "|:|::"};
 	
 	public Barcode( String zip){
 		this.zip = zip;
@@ -33,10 +33,48 @@ public class Barcode{
 	
 	public int sumDigs(String num){
 		int sum = 0;
-		for( int stepper = 0; stepper < zip.length(); stepper++){
+		for( int stepper = 0; stepper < this.zip.length(); stepper++){
 			sum += Integer.parseInt(zip.substring(stepper, stepper + 1));
 		}
 		return sum;
+	}
+	
+	public static String toCode( String zipCode){
+		String[] reps = {"||:::", ":::||", "::|:|", "::||:", ":|::|", ":|:|:", ":||::", "|:::|", "|::|:", "|:|::"};
+		String inBar = "|";
+		int check;
+		Barcode b = new Barcode("11111");
+		check = b.sumDigs(zipCode) % 10;
+		if( zipCode.length() != 5){
+			throw new IllegalArgumentException();
+		}
+		for( int stepper = 0; stepper < zipCode.length(); stepper++){
+			if( !Character.isDigit(zipCode.charAt(stepper))){
+				throw new IllegalArgumentException();
+			}
+		}
+		for( int stepper = 0; stepper < zipCode.length(); stepper++){
+			inBar += reps[Integer.parseInt(zipCode.substring(stepper, stepper + 1))];
+		}
+		inBar += reps[check] + "|";
+		return inBar;
+	}
+	
+	public static String toZip(String code){
+		String buildZip = "";
+		String[] reps = {"||:::", ":::||", "::|:|", "::||:", ":|::|", ":|:|:", ":||::", "|:::|", "|::|:", "|:|::"};
+		int check;
+		Barcode b = new Barcode("11111");
+		for( int stepper = 1; stepper < code.length() - 6; stepper += 5){
+			for( int stepperIn = 0; stepperIn < reps.length; stepperIn++){
+				if( code.substring(stepper, stepper + 6).equals(reps[stepperIn])){
+					buildZip += ( "" + stepperIn);
+				}
+			}
+		}
+		check = b.sumDigs(buildZip) % 10;
+		buildZip += check;
+		return buildZip;
 	}
 
 	public static void main(String[] args){
@@ -45,7 +83,8 @@ public class Barcode{
 		System.out.println(b.getBar());
 		System.out.println(b.getCheckDig());
 		System.out.println(b.toString());
-		
+		System.out.println(toCode( "11953"));
+		System.out.println(toCode( "|:::||:::||:::||:::||:::||:|:|:|"));
 	}
 
 
