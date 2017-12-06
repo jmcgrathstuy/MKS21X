@@ -63,28 +63,45 @@ public class Barcode{
 	public static String toZip(String code){
 		String buildZip = "";
 		String[] reps = {"||:::", ":::||", "::|:|", "::||:", ":|::|", ":|:|:", ":||::", "|:::|", "|::|:", "|:|::"};
-		int check;
 		Barcode b = new Barcode("11111");
+		
+		if( code.length() != 32){
+			throw new IllegalArgumentException();
+		}
+		if( !code.substring(0, 1).equals("|") || !code.substring(31, 32).equals("|")){
+			throw new IllegalArgumentException();
+		}
+		for( int stepper = 1; stepper <= code.length() - 6; stepper += 5){
+			boolean checker = true;
+			for( int stepperIn = 0; stepperIn < reps.length; stepperIn++){
+				if( code.substring(stepper, stepper + 5).equals(reps[stepperIn])){
+					checker = false;
+				}
+			}
+			if( checker){
+				throw new IllegalArgumentException();
+			}
+		}
+		
 		for( int stepper = 1; stepper < code.length() - 6; stepper += 5){
 			for( int stepperIn = 0; stepperIn < reps.length; stepperIn++){
-				if( code.substring(stepper, stepper + 6).equals(reps[stepperIn])){
+				if( code.substring(stepper, stepper + 5).equals(reps[stepperIn])){
 					buildZip += ( "" + stepperIn);
 				}
 			}
 		}
-		check = b.sumDigs(buildZip) % 10;
-		buildZip += check;
 		return buildZip;
 	}
 
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		Barcode b = new Barcode("11111");
 		System.out.println(b.getZip());
 		System.out.println(b.getBar());
 		System.out.println(b.getCheckDig());
 		System.out.println(b.toString());
 		System.out.println(toCode( "11953"));
-		System.out.println(toCode( "|:::||:::||:::||:::||:::||:|:|:|"));
+		System.out.println(toZip( "|:::||:::|||:|:::|:|:::||::|:|:|"));
+		System.out.println(toZip( "|:::||:::|||:|:::|:|:::||::::::|"));*/
 	}
 
 
