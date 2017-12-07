@@ -21,16 +21,28 @@ public class Sorts{
 		}
 	}
 	
+	public static void insertionSort(int[] data){
+		for( int stepper = 1; stepper < data.length && data.length > 1; stepper++){
+			int keepUp = stepper;
+			for( int stepperIn = stepper - 1; stepperIn >= 0; stepperIn--, keepUp--){
+				if( data[keepUp] < data[stepperIn]){
+				    int temp = data[keepUp];
+				    data[keepUp] = data[stepperIn];
+				    data[stepperIn] = temp;
+				}
+			}
+		}
+	}
 	
 	/*public static void main( String[] agrs){
 		int[] a = {43, 65, 90, 43, 56, 7, 1, 23, 5};
-		selectionSort(a);
+		insertionSort(a);
 		System.out.println(Arrays.toString(a));
-		int[] b = {1, 1, 1, 1, 1, 1, 1};
-		selectionSort(b);
+		int[] b = {1, 3, 1, 2, 1, 2, 1};
+		insertionSort(b);
 		System.out.println(Arrays.toString(b));
 		int[] c = {};
-		selectionSort(c);
+		insertionSort(c);
 		System.out.println(Arrays.toString(c));
 	}*/
 	
