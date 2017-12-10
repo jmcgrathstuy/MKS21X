@@ -3,7 +3,7 @@ public class Sorts{
 	
 	
 	public static String name(){
-		return "01.McGrath.James";
+		return "10.McGrath.James";
 	}
 	
 	public static void selectionSort(int[] data){
@@ -34,16 +34,32 @@ public class Sorts{
 		}
 	}
 	
+	public static void bubbleSort(int[] data){
+		for( int stopSpot = data.length; stopSpot > 1 && data.length > 1; stopSpot--){
+			for( int stepper = 1; stepper < stopSpot; stepper++){
+				if( data[stepper] < data[stepper - 1]){
+					int temp = data[stepper - 1];
+				    data[stepper - 1] = data[stepper];
+				    data[stepper] = temp;
+				}
+			}
+			//System.out.println(Arrays.toString(data)); //For Testing Purposes
+		}
+	}
+	
 	/*public static void main( String[] agrs){
 		int[] a = {43, 65, 90, 43, 56, 7, 1, 23, 5};
-		insertionSort(a);
+		bubbleSort(a);
 		System.out.println(Arrays.toString(a));
 		int[] b = {1, 3, 1, 2, 1, 2, 1};
-		insertionSort(b);
+		bubbleSort(b);
 		System.out.println(Arrays.toString(b));
-		int[] c = {};
-		insertionSort(c);
+		int[] c = {1};
+		bubbleSort(c);
 		System.out.println(Arrays.toString(c));
+		int[] d = {};
+		bubbleSort(d);
+		System.out.println(Arrays.toString(d));
 	}*/
 	
 }
