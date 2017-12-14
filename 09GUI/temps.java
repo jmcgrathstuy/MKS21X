@@ -48,9 +48,11 @@ public class temps extends JFrame implements ActionListener{
 	    String s = e.getActionCommand();
 	    System.out.println(s);
 		if(s.equals("C to F")){
-			system.out.println(CtoF(Integer.parseInt(t.getText)));
+			System.out.println(CtoF(Integer.parseInt(t.getText())));
 		}else{
-			system.out.println(FtoC(Integer.parseInt(t.getText)));
+			System.out.println(FtoC(Integer.parseInt(t.getText())));
 		}
 	}
+	
+}
     
