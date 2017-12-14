@@ -11,7 +11,7 @@ public class temps extends JFrame implements ActionListener{
     public temps(){
 
 	this.setTitle("Converter");
-	this.setSize(600,400);
+	this.setSize(350,100);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	
@@ -20,7 +20,7 @@ public class temps extends JFrame implements ActionListener{
 	
 	b = new JButton("C to F");
 	b2 = new JButton("F to C");
-	t = new JTextField("Temperature");
+	t = new JTextField("                  ");
 	
 	b.addActionListener(this);
 	b2.addActionListener(this);
@@ -35,11 +35,15 @@ public class temps extends JFrame implements ActionListener{
 
     
     public static double CtoF(double t){
-	    return (t * (9 / 5) + 32);
+		t = t * 9 / 5;
+		t += 32;
+		return t;
     }
 
     public static double FtoC(double t){
-	    return ((t - 32) * (5/9));
+	    t -= 32;
+		t = t * 5 / 9;
+		return t;
     }
 
     
@@ -48,10 +52,15 @@ public class temps extends JFrame implements ActionListener{
 	    String s = e.getActionCommand();
 	    System.out.println(s);
 		if(s.equals("C to F")){
-			System.out.println(CtoF(Integer.parseInt(t.getText())));
+			System.out.println(CtoF(Double.parseDouble(t.getText())));
 		}else{
-			System.out.println(FtoC(Integer.parseInt(t.getText())));
+			System.out.println(FtoC(Double.parseDouble(t.getText())));
 		}
+	}
+	
+	public static void main( String[] args){
+		temps g = new temps();
+		g.setVisible(true);
 	}
 	
 }
