@@ -1,9 +1,16 @@
+import java.util.Arrays;
+import java.util.ArrayList;
 public class SuperArray{
 
 /*New and Improved edition w/ fixed size functionality and throwing actual errors*/
 
     private String[] data;
     private int size;
+
+    public SuperArray(){
+	size = 0;
+	data = new String[0];
+    }
 
     public SuperArray(int inSize){
 	size = 0;
